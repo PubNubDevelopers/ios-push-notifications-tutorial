@@ -1,3 +1,5 @@
+## IN PROGRESS ##
+
 # Samples for PubNub Chat Components for iOS
 
 This repository contains a set of iOS projects that will help you learn about PubNub Chat Components for iOS.
