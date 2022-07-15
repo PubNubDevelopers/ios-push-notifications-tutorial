@@ -15,6 +15,9 @@
 		357AB6D92790E2A200E2839B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357AB6D72790E2A200E2839B /* LaunchScreen.storyboard */; };
 		357AB6E22790E8F600E2839B /* PubNubChat in Frameworks */ = {isa = PBXBuildFile; productRef = 357AB6E12790E8F600E2839B /* PubNubChat */; };
 		357AB6E42790E8F600E2839B /* PubNubChatComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 357AB6E32790E8F600E2839B /* PubNubChatComponents */; };
+		CD6A16832881EC1200D2139E /* PubNubConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A16822881EC1200D2139E /* PubNubConnection.swift */; };
+		CD6A16862881EFBF00D2139E /* PubNubChat in Frameworks */ = {isa = PBXBuildFile; productRef = CD6A16852881EFBF00D2139E /* PubNubChat */; };
+		CD6A16882881EFBF00D2139E /* PubNubChatComponents in Frameworks */ = {isa = PBXBuildFile; productRef = CD6A16872881EFBF00D2139E /* PubNubChatComponents */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,7 @@
 		357AB6D52790E2A200E2839B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		357AB6D82790E2A200E2839B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		357AB6DA2790E2A200E2839B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD6A16822881EC1200D2139E /* PubNubConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNubConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +38,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				357AB6E42790E8F600E2839B /* PubNubChatComponents in Frameworks */,
+				CD6A16862881EFBF00D2139E /* PubNubChat in Frameworks */,
+				CD6A16882881EFBF00D2139E /* PubNubChatComponents in Frameworks */,
 				357AB6E22790E8F600E2839B /* PubNubChat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +73,7 @@
 				357AB6D52790E2A200E2839B /* Assets.xcassets */,
 				357AB6D72790E2A200E2839B /* LaunchScreen.storyboard */,
 				357AB6DA2790E2A200E2839B /* Info.plist */,
+				CD6A16822881EC1200D2139E /* PubNubConnection.swift */,
 			);
 			path = "getting-started";
 			sourceTree = "<group>";
@@ -90,6 +97,8 @@
 			packageProductDependencies = (
 				357AB6E12790E8F600E2839B /* PubNubChat */,
 				357AB6E32790E8F600E2839B /* PubNubChatComponents */,
+				CD6A16852881EFBF00D2139E /* PubNubChat */,
+				CD6A16872881EFBF00D2139E /* PubNubChatComponents */,
 			);
 			productName = "getting-started";
 			productReference = 357AB6C92790E2A100E2839B /* getting-started.app */;
@@ -121,6 +130,7 @@
 			mainGroup = 357AB6C02790E2A000E2839B;
 			packageReferences = (
 				357AB6E02790E8F600E2839B /* XCRemoteSwiftPackageReference "chat-components-ios" */,
+				CD6A16842881EFBF00D2139E /* XCRemoteSwiftPackageReference "chat-components-ios" */,
 			);
 			productRefGroup = 357AB6CA2790E2A100E2839B /* Products */;
 			projectDirPath = "";
@@ -150,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				357AB6D12790E2A100E2839B /* ViewController.swift in Sources */,
+				CD6A16832881EC1200D2139E /* PubNubConnection.swift in Sources */,
 				357AB6CD2790E2A100E2839B /* AppDelegate.swift in Sources */,
 				357AB6CF2790E2A100E2839B /* SceneDelegate.swift in Sources */,
 			);
@@ -380,6 +391,14 @@
 				minimumVersion = 0.0.0;
 			};
 		};
+		CD6A16842881EFBF00D2139E /* XCRemoteSwiftPackageReference "chat-components-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pubnub/chat-components-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -391,6 +410,16 @@
 		357AB6E32790E8F600E2839B /* PubNubChatComponents */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 357AB6E02790E8F600E2839B /* XCRemoteSwiftPackageReference "chat-components-ios" */;
+			productName = PubNubChatComponents;
+		};
+		CD6A16852881EFBF00D2139E /* PubNubChat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD6A16842881EFBF00D2139E /* XCRemoteSwiftPackageReference "chat-components-ios" */;
+			productName = PubNubChat;
+		};
+		CD6A16872881EFBF00D2139E /* PubNubChatComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD6A16842881EFBF00D2139E /* XCRemoteSwiftPackageReference "chat-components-ios" */;
 			productName = PubNubChatComponents;
 		};
 /* End XCSwiftPackageProductDependency section */

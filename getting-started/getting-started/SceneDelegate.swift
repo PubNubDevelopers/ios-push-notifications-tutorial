@@ -11,20 +11,8 @@ import PubNub
 import PubNubChat
 import PubNubChatComponents
 
-let PUBNUB_PUBLISH_KEY = "myPublishKey"
-let PUBNUB_SUBSCRIBE_KEY = "myPublishKey"
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-  // Creates PubNub configuration
-  lazy var pubnubConfiguration = {
-    return PubNubConfiguration(
-      publishKey: PUBNUB_PUBLISH_KEY,
-      subscribeKey: PUBNUB_SUBSCRIBE_KEY,
-      uuid: "myFirstUser"
-    )
-  }()
-  
+  var pubNub = PubNubConnection.shared
   var window: UIWindow?
 
   var chatProvider: PubNubChatProvider?
@@ -42,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     if chatProvider == nil {
       // Creates a new ChatProvider
       let provider = PubNubChatProvider(
-        pubnubProvider: PubNub(configuration: pubnubConfiguration)
+        pubnubProvider: pubNub
       )
       
       // Preloads dummy data
@@ -77,14 +65,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Creates a user object with uuid
     let user = PubNubChatUser(
       id: chatProvider.pubnubConfig.uuid,
-      name: "myFirstUser",
+      name: chatProvider.pubnubConfig.uuid,
       avatarURL: URL(string: "https://picsum.photos/seed/\(chatProvider.pubnubConfig.uuid)/200")
     )
     
     // Creates a channel object
     let channel = PubNubChatChannel(
       id: defaultChannelId,
-      name: "Default",
+      name: defaultChannelId,
       type: "direct",
       avatarURL: URL(string: "https://picsum.photos/seed/\(defaultChannelId)/200")
     )
@@ -99,4 +87,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     chatProvider.dataProvider.load(members: [membership])
   }
 }
-
