@@ -11,8 +11,9 @@ import Foundation
 import PubNub
 
 final class PubNubConnection {
-    private static let PUBNUB_PUBLISH_KEY = "myPublishKey"
-    private static let PUBNUB_SUBSCRIBE_KEY = "mySubscribeKey"
+    //PubNub Keys
+    private static let PUBNUB_PUBLISH_KEY = "PUBLISH_KEY_HERE"
+    private static let PUBNUB_SUBSCRIBE_KEY = "SUBSCRIBE_KEY_HERE"
     static let shared : PubNub = PubNub(
         configuration: PubNubConfiguration(
           publishKey: PUBNUB_PUBLISH_KEY,
