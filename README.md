@@ -1,30 +1,85 @@
-## IN PROGRESS ##
+# Adding Push Notification to an iOS Swift Application Using APNs
+This application builds upon [PubNub's iOS Chat Components Application](https://github.com/pubnub/chat-components-ios-examples) by adding Apple push notifications. You'll be using PubNub to construct and send push notification payloads to the Apple Push Notification Service (APNs) to deliver the notifications to your device. A [detailed tutorial](https://www.pubnub.com/tutorials/push-notifications-ios-swift/) is available for a step-by-step guide.
 
-# Samples for PubNub Chat Components for iOS
+<img src="/assets/getting-started-ios-app.png" alt="Getting Started app for iOS" style="width:300px"/>
 
-This repository contains a set of iOS projects that will help you learn about PubNub Chat Components for iOS.
+## Features
 
-Each sample application demonstrates a different type of chat, set of features, and use case.
+* Pre-built UI Component that renders and handles displaying the chat room.
+* Send messages to other users in the chat room.
+* Receive messages from other users in the chat room.
+* See past messages from other users in the chat room, even if the current user is offline.
+* See typing indicators from users in the [debug console](https://www.pubnub.com/docs/console) and interact with the Android app in real-time.
+* Receive and display push notifications, regardless of application state
 
-## Prerequisites
+## Installing / Getting started
 
-You need these to get started:
+### Requirements
+- [Xcode](https://developer.apple.com/xcode/) (The latest stable version)
+- [Git](https://www.atlassian.com/git/tutorials/install-git)
+- [Apple Developer Account](https://developer.apple.com/account) with access to the Apple Developer Program. You'll need to be enrolled in this program in order to access services that allow your application to receive push notifications from APNs. Please note that this is a paid program.
+- Physical iOS Device (iPhone, iPad, iPod Touch, etc). Simulated devices in Xcode cannot be registered in APNs, and thus cannot receive a device token, which is necessary when sending push notifications across the PubNub network.
+- [PubNub Account](#pubnub-account) (*Free*)
 
-* [Xcode](https://developer.apple.com/xcode/) (>= Xcode 13)
-* [PubNub Keyset](https://dashboard.pubnub.com/)
+<a href="https://dashboard.pubnub.com/signup">
+	<img alt="PubNub Signup" src="https://i.imgur.com/og5DDjf.png" width=260 height=97/>
+</a>
 
-Clone this project and open a given app in Xcode. If you're authenticated into Xcode with your GitHub account, you can also open the project directly from GitHub using the [Open in Xcode](https://github.blog/2017-06-05-clone-in-xcode/) button.
+### Get Your PubNub Keys
+1. Sign in to your [PubNub Dashboard](https://admin.pubnub.com/). You are now in the Admin Portal.
+2. Go to Apps using the left-hand side navigation.
+3. Click the Create New App button in the top-right of the Portal.
+4. Give your app a name.
+5. Click Create.
+6. Click your new app to open its settings.
+7. When you create a new app, the first set of keys are generated automatically. However, a single app can have as many keysets as you like. PubNub recommends that you create separate keysets for production and test environments.
+8. Click on the keyset.
+9. Enable four features for the keyset to be able to connect to the PubNub Network: Presence, Message Persistence, Stream Controller, and Mobile Push Notifications.
+10. Enable Presence by clicking on the slider to turn it on. A pop-up will require that you enter in “ENABLE”. Enter in “ENABLE” in all caps and then press the “Enable” button. You can leave the default settings.
+11. Enable Message Persistence by clicking on the slider to turn it on. You can leave the default settings.
+12. Enable Stream Controller by clicking on the slider to turn it on if it is already not enabled. You can leave the default settings.
+13. Enable Push Notifications by clicking on the slider to turn it on. In the Apple Push Credentials section, you need to upload the APNs Authentication Token file. This file is obtained from your Apple Developer Account when you create your Key in Certificates, Identifiers & Profiles -> Keys -> Register a New Key -> Give the key a name and enable APNs -> Click continue, register, and then download. If you no longer have access to the token file, you'll need to register and create a new key. Upload the token file. Enter in the Team ID and Auth Key ID fields found in the following locations in your Apple Developer Account. Team ID:  Overview -> Membership -> Team ID; Auth Key ID:  Overview -> Certificates, IDs & Profiles -> Keys -> <key name> Key ID in View Key Details.
+14. Click on save changes.
+15. Copy the Publish and Subscribe Keys to a text editor.
 
-## Sample apps
+### Building and Running
+1. Clone the GitHub repository.
 
-Choose a sample application that demonstrates the use of chat components.
+	```bash
+	git clone https://github.com/PubNubDevelopers/ios-push-notifications-tutorial.git
+	```
+2. Open your project in Xcode. Sign in using your developer account if you have not done so.
+3. In the project navigator, click on the project file. In the Targets section, click on your project.
+4. In the General tab, enter a unique Bundle Identifier by appending something like -push at the end of the ID. APNs identifies your application in a provisioning profile by combining a Team ID (generated by Apple) and your Bundle Identifier as an explicit App ID to be able to use certain capabilities, including receiving push notifications for your application.
+5. Click on the Signing & Capabilities tab.
+6. Ensure that the checkbox for "Automatically manage signing" is checked.
+7. In the Signing section, ensure that your developer account is selected in the Team drop-down.
+8. Ensure the Bundle Identifier is the same as that in the General tab.
+9. Add Push Notification support to your application by clicking on the + symbol, search for "push notifications", and then double click the Capability to add to your application.
+10. This application utilizes the PubNub Swift SDK and Chat Components for iOS libraries. Add these packages by clicking on File -> Add Packages and entering the following package URL: https://github.com/pubnub/chat-components-ios.
+11. Navigate to AppDelegate.swift. At the top of the file, ensure that the PubNub library necessary to be able to use the PubNub Swift SDK is already imported. Add the UserNotifications library to be able to use push notifications in your project.
+12. Connect and register physical Apple Device.
+13. Build and run app by pressing the play button.
+14. Send and receive messages, and view past messages from other users.
+15. Generate new users each time the application is restarted.
+16. Receive messages in real-time by interacting with the [debug console](https://www.pubnub.com/docs/console).
+17. Incorporate push functionality.
 
-| Name | Features | Chat type | Use case |
-|-----|---------|---------|---------|
-| [`getting-started`](getting-started/) | <br><ul><li>Message list and message input integration</li><li>Light & dark themes</li></ul></br> | 1:1 | <img src="/assets/getting-started-ios-app.png" alt="Getting Started app for iOS" style="width:300px"/> |
+## Links
 
-## Useful links
+- Project homepage: https://pubnub.com
+- Tutorial Link: https://www.pubnub.com/tutorials/push-notifications-ios-swift/
+- Swift Weather Application integrated with chat using PubNub's Chat Components for iOS: https://github.com/PubNubDevelopers/Swift-Weather-Chat/
 
-For more information about PubNub Chat Components for iOS, refer to:
-* [GitHub repository](https://github.com/pubnub/chat-components-ios/blob/master/README.md)
-* [Documentation](https://www.pubnub.com/docs/chat/components/ios/get-started-ios)
+## License
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
