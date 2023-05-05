@@ -1,5 +1,5 @@
-# Adding Push Notification to an iOS Swift Application Using APNs
-This application builds upon [PubNub's iOS Chat Components Application](https://github.com/pubnub/chat-components-ios-examples) by adding Apple push notifications. You'll be using PubNub to construct and send push notification payloads to the Apple Push Notification Service (APNs) to deliver the notifications to your device. A [detailed tutorial](https://www.pubnub.com/tutorials/push-notifications-ios-swift/) is available for a step-by-step guide.
+# Adding Mobile Push Notifications to an iOS Swift Application Using APNs
+This application builds upon [PubNub's iOS Chat Components Application](https://github.com/pubnub/chat-components-ios-examples) by adding Apple push notifications. You'll be using PubNub to construct and send mobile push notification payloads to the Apple Push Notification Service (APNs) to deliver the notifications to your device. A [detailed tutorial](https://www.pubnub.com/tutorials/mobile-push-notifications-ios-swift/) is available for a step-by-step guide.
 
 <img src="/assets/getting-started-ios-app.png" alt="Getting Started app for iOS" style="width:300px"/>
 
@@ -9,16 +9,16 @@ This application builds upon [PubNub's iOS Chat Components Application](https://
 * Send messages to other users in the chat room.
 * Receive messages from other users in the chat room.
 * See past messages from other users in the chat room, even if the current user is offline.
-* See typing indicators from users in the [debug console](https://www.pubnub.com/docs/console) and interact with the Android app in real-time.
-* Receive and display push notifications, regardless of application state
+* See message actions from users in the [debug console](https://www.pubnub.com/docs/console) and interact with the iOS app in real-time.
+* Receive and display mobile push notifications, regardless of application state
 
 ## Installing / Getting started
 
 ### Requirements
 - [Xcode](https://developer.apple.com/xcode/) (The latest stable version)
 - [Git](https://www.atlassian.com/git/tutorials/install-git)
-- [Apple Developer Account](https://developer.apple.com/account) with access to the Apple Developer Program. You'll need to be enrolled in this program in order to access services that allow your application to receive push notifications from APNs. Please note that this is a paid program.
-- Physical iOS Device (iPhone, iPad, iPod Touch, etc). Simulated devices in Xcode cannot be registered in APNs, and thus cannot receive a device token, which is necessary when sending push notifications across the PubNub network.
+- [Apple Developer Account](https://developer.apple.com/account) with access to the Apple Developer Program. You'll need to be enrolled in this program in order to access services that allow your application to receive mobile push notifications from APNs. Please note that this is a paid program.
+- Physical iOS Device (iPhone, iPad, iPod Touch, etc). Simulated devices in Xcode cannot be registered in APNs, and thus cannot receive a device token, which is necessary when sending mobile push notifications across the PubNub network.
 - [PubNub Account](#pubnub-account) (*Free*)
 
 <a href="https://dashboard.pubnub.com/signup">
@@ -38,7 +38,7 @@ This application builds upon [PubNub's iOS Chat Components Application](https://
 10. Enable Presence by clicking on the slider to turn it on. A pop-up will require that you enter in “ENABLE”. Enter in “ENABLE” in all caps and then press the “Enable” button. You can leave the default settings.
 11. Enable Message Persistence by clicking on the slider to turn it on. You can leave the default settings.
 12. Enable Stream Controller by clicking on the slider to turn it on if it is already not enabled. You can leave the default settings.
-13. Enable Push Notifications by clicking on the slider to turn it on. In the Apple Push Credentials section, you need to upload the APNs Authentication Token file. This file is obtained from your Apple Developer Account when you create your Key in Certificates, Identifiers & Profiles -> Keys -> Register a New Key -> Give the key a name and enable APNs -> Click continue, register, and then download. If you no longer have access to the token file, you'll need to register and create a new key. Upload the token file. Enter in the Team ID and Auth Key ID fields found in the following locations in your Apple Developer Account. Team ID:  Overview -> Membership -> Team ID; Auth Key ID:  Overview -> Certificates, IDs & Profiles -> Keys -> <key name> Key ID in View Key Details.
+13. Enable Mobile Push Notifications by clicking on the slider to turn it on. In the Apple Push Credentials section, you need to upload the APNs Authentication Token file. This file is obtained from your Apple Developer Account when you create your Key in Certificates, Identifiers & Profiles -> Keys -> Register a New Key -> Give the key a name and enable APNs -> Click continue, register, and then download. If you no longer have access to the token file, you'll need to register and create a new key. Upload the token file. Enter in the Team ID and Auth Key ID fields found in the following locations in your Apple Developer Account. Team ID:  Overview -> Membership -> Team ID; Auth Key ID:  Overview -> Certificates, IDs & Profiles -> Keys -> <key name> Key ID in View Key Details.
 14. Click on save changes.
 15. Copy the Publish and Subscribe Keys to a text editor.
 
@@ -50,14 +50,14 @@ This application builds upon [PubNub's iOS Chat Components Application](https://
 	```
 2. Open your project in Xcode. Sign in using your developer account if you have not done so.
 3. In the project navigator, click on the project file. In the Targets section, click on your project.
-4. In the General tab, enter a unique Bundle Identifier by appending something like -push at the end of the ID. APNs identifies your application in a provisioning profile by combining a Team ID (generated by Apple) and your Bundle Identifier as an explicit App ID to be able to use certain capabilities, including receiving push notifications for your application.
+4. In the General tab, enter a unique Bundle Identifier by appending something like -push at the end of the ID. APNs identifies your application in a provisioning profile by combining a Team ID (generated by Apple) and your Bundle Identifier as an explicit App ID to be able to use certain capabilities, including receiving mobile push notifications for your application.
 5. Click on the Signing & Capabilities tab.
 6. Ensure that the checkbox for "Automatically manage signing" is checked.
 7. In the Signing section, ensure that your developer account is selected in the Team drop-down.
 8. Ensure the Bundle Identifier is the same as that in the General tab.
-9. Add Push Notification support to your application by clicking on the + symbol, search for "push notifications", and then double click the Capability to add to your application.
+9. Add Mobile Push Notification support to your application by clicking on the + symbol, search for "push notifications", and then double click the Capability to add to your application.
 10. This application utilizes the PubNub Swift SDK and Chat Components for iOS libraries. Add these packages by clicking on File -> Add Packages and entering the following package URL: https://github.com/pubnub/chat-components-ios.
-11. Navigate to AppDelegate.swift. At the top of the file, ensure that the PubNub library necessary to be able to use the PubNub Swift SDK is already imported. Add the UserNotifications library to be able to use push notifications in your project.
+11. Navigate to AppDelegate.swift. At the top of the file, ensure that the PubNub library necessary to be able to use the PubNub Swift SDK is already imported. Add the UserNotifications library to be able to use mobile push notifications in your project.
 12. Connect and register physical Apple Device.
 13. Build and run app by pressing the play button.
 14. Send and receive messages, and view past messages from other users.
@@ -68,7 +68,7 @@ This application builds upon [PubNub's iOS Chat Components Application](https://
 ## Links
 
 - Project homepage: https://pubnub.com
-- Tutorial Link: https://www.pubnub.com/tutorials/push-notifications-ios-swift/
+- Tutorial Link: https://www.pubnub.com/tutorials/mobile-push-notifications-ios-swift/
 - Swift Weather Application integrated with chat using PubNub's Chat Components for iOS: https://github.com/PubNubDevelopers/Swift-Weather-Chat/
 
 ## License
