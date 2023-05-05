@@ -9,7 +9,7 @@ This application builds upon [PubNub's iOS Chat Components Application](https://
 * Send messages to other users in the chat room.
 * Receive messages from other users in the chat room.
 * See past messages from other users in the chat room, even if the current user is offline.
-* See message actions from users in the [debug console](https://www.pubnub.com/docs/console) and interact with the Android app in real-time.
+* See message reactions from users in the [debug console](https://www.pubnub.com/docs/console) and interact with the Android app in real-time.
 * Receive and display mobile push notifications, regardless of application state
 
 ## Installing / Getting started
